@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Absen;
+use App\Siswa;
+use App\Kelas;
+use App\Piket;
 use Illuminate\Http\Request;
 use session;
 class AbsenController extends Controller
@@ -25,7 +28,10 @@ class AbsenController extends Controller
      */
     public function create()
     {
-        return view('absen.create');
+        $siswa = Siswa::all();
+        $kelas = Kelas::all();
+        $piket = Piket::all();
+        return view('absen.create',compact('siswa','kelas','piket'));
     }
 
     /**
@@ -41,14 +47,14 @@ class AbsenController extends Controller
             'kelas_id' => 'required|',
             'keterangan' => 'required|',
             'alasan' => 'required|',
-            'absen_id' => 'required|'
+            'piket_id' => 'required|'
         ]);
         $absen = new Absen;
         $absen->siswa_id = $request->siswa_id;
         $absen->kelas_id = $request->kelas_id;
         $absen->keterangan = $request->keterangan;
         $absen->alasan = $request->alasan;    
-        $absen->absen_id = $request->absen_id;
+        $absen->piket_id = $request->piket_id;
         $absen->save();
         Session::flash("flash_notification", [
         "level"=>"success",
@@ -95,14 +101,14 @@ class AbsenController extends Controller
             'kelas_id' => 'required|',
             'keterangan' => 'required|',
             'alasan' => 'required|',
-            'absen_id' => 'required|'
+            'piket_id' => 'required|'
         ]);
         $absen = new Absen;
         $absen->siswa_id = $request->siswa_id;
         $absen->kelas_id = $request->kelas_id;
         $absen->keterangan = $request->keterangan;
         $absen->alasan = $request->alasan;    
-        $absen->absen_id = $request->absen_id;
+        $absen->piket_id = $request->piket_id;
         $a->save();
         Session::flash("flash_notification", [
         "level"=>"success",

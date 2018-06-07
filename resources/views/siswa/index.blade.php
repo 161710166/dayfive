@@ -4,13 +4,15 @@
 	<div class="container">
 		<div class="col-md-12">
 			<div class="panel panel-primary">
-			  <div class="panel-heading">Data Siswa
+			  <div class="panel-heading"><center><b><h3>Data Siswa</h3></b></center>
 			  	<div class="panel-title pull-right"><a href="{{ route('siswa.create') }}">Tambah</a>
 			  	</div>
 			  </div>
 			  <div class="panel-body">
 			  	<div class="table-responsive">
-				  <table class="table">
+				  <table border="4" class="table">
+                            <div class="col-lg-9">
+                                    <table class="table table-borderless table-striped table-earning">
 				  	<thead>
 			  		<tr>
 			  		  <th>No</th>
@@ -19,6 +21,7 @@
 					  <th>Jenis Kelamin</th>
 					  <th>Tanggal Lahir</th>
 					  <th>Alamat</th>
+					  <th>Kelas</th>
 					  <th colspan="3">Action</th>
 			  		</tr>
 				  	</thead>
@@ -33,12 +36,9 @@
 				    	<td>{{ $data->jk }}</td>
 				    	<td>{{ $data->tanggal_lahir }}</td>
 				    	<td>{{ $data->alamat }}</td>
-				    	<td><p>{{ $data->Kelas->kelas }}</p></td>
+				    	<td><p>{{ $data->kelas->kelas }}</p></td>
 <td>
 	<a class="btn btn-warning" href="{{ route('siswa.edit',$data->id) }}">Edit</a>
-</td>
-<td>
-	<a href="{{ route('siswa.show',$data->id) }}" class="btn btn-success">Show</a>
 </td>
 <td>
 	<form method="post" action="{{ route('siswa.destroy',$data->id) }}">

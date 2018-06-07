@@ -9,22 +9,22 @@
 			  	</div>
 			  </div>
 			  <div class="panel-body">
-			  	<form action="{{ route('dosen.update',$a->id) }}" method="post" >
+			  	<form action="{{ route('piket.update',$piket->id) }}" method="post" >
 			  		<input name="_method" type="hidden" value="PATCH">
         			{{ csrf_field() }}
-			  		<div class="form-group {{ $errors->has('nama') ? ' has-error' : '' }}">
-			  			<label class="control-label">Nama</label>	
-			  			<input type="text" name="nama" class="form-control" value="{{ $a->nama }}"  required>
-			  			@if ($errors->has('nama'))
+			  		<div class="form-group {{ $errors->has('nama_guru_piket') ? ' has-error' : '' }}">
+			  			<label class="control-label">nama guru piket</label>	
+			  			<input type="text" name="nama_guru_piket" class="form-control" value="{{ $piket->nama_guru_piket }}"  required>
+			  			@if ($errors->has('nama_guru_piket'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('nama') }}</strong>
+                                <strong>{{ $errors->first('nama_guru_piket') }}</strong>
                             </span>
                         @endif
 			  		</div>
 
 			  		<div class="form-group {{ $errors->has('hari') ? ' has-error' : '' }}">
 			  			<label class="control-label">hari</label>	
-			  			<input type="text" name="hari" class="form-control" value="{{ $a->hari }}"  required>
+			  			<input type="text" name="hari" class="form-control" value="{{ $piket->hari }}"  required>
 			  			@if ($errors->has('hari'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('hari') }}</strong>

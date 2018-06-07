@@ -23,15 +23,15 @@
 
     <!-- Vendor CSS-->
     <link href="{{asset('assets/admin/vendor/animsition/animsition.min.css')}}" rel="stylesheet" media="all">
-    <link href="{{asset('assets/admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="{{asset('asset/admin/vendor/wow/animate.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('assets/admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('assets/admin/vendor/wow/animate.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('assets/admin/vendor/css-hamburgers/hamburgers.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('assets/admin/vendor/slick/slick.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('assets/admin/vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('assets/admin/vendor/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="assets/admin/css/theme.css" rel="stylesheet" media="all">
+    <link href="{{asset('assets/admin/css/theme.css')}}" rel="stylesheet" media="all">
 @yield('css')
 </head>
 
@@ -54,7 +54,7 @@
 
         <!-- MAIN CONTENT-->
     <div class="main-content">
-@yield('content')
+    @yield('content')
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->
         </div>
@@ -69,7 +69,7 @@
     <!-- Vendor JS       -->
     <script src="{{asset('assets/admin/vendor/slick/slick.min.js')}}">
     </script>
-    <script src="{{asset('assets/admin/vendor/wow/wow.min.js"></script>
+    <script src="{{asset('assets/admin/vendor/wow/wow.min.js')}}"></script>
     <script src="{{asset('assets/admin/vendor/animsition/animsition.min.js')}}"></script>
     <script src="{{asset('assets/admin/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js')}}">
     </script>
@@ -78,7 +78,7 @@
     </script>
     <script src="{{asset('assets/admin/vendor/circle-progress/circle-progress.min.js')}}"></script>
     <script src="{{asset('assets/admin/vendor/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
-    <script     src="{{asset('assets/admin/vendor/chartjs/Chart.bundle.min.js')}}"></script>
+    <script src="{{asset('assets/admin/vendor/chartjs/Chart.bundle.min.js')}}"></script>
     <script src="{{asset('assets/admin/vendor/select2/select2.min.js')}}">
     </script>
 

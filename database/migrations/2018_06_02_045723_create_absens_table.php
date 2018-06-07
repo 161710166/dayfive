@@ -20,7 +20,6 @@ class CreateAbsensTable extends Migration
             $table->unsignedInteger('kelas_id');
             $table->foreign('kelas_id')->references('id')->on('kelas')->ondelete('casade');
             $table->string('keterangan');
-            $table->string('alasan');
             $table->unsignedInteger('piket_id');
             $table->foreign('piket_id')->references('id')->on('pikets')->ondelete('casade');               
             $table->timestamps();

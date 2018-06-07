@@ -16,8 +16,6 @@ class CreateKelasTable extends Migration
         Schema::create('kelas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kelas');            
-            $table->unsignedInteger('siswa_id');
-            $table->foreign('siswa_id')->references('id')->on('siswas')->ondelete('casade');            
             $table->timestamps();
         });
     }

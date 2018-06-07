@@ -39,35 +39,18 @@ class PiketController extends Controller
     {
         $this->validate($request,[
             'nama_guru_piket' => 'required|',
-            'hari' => 'required|unique:pikets'
+            'hari' => 'required|'
         ]);
         $piket = new Piket;
         $piket->nama_guru_piket = $request->nama_guru_piket;
         $piket->hari = $request->hari;
         $piket->save();
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil menyimpan <b>$a->nama</b>"
-        ]);
         return redirect()->route('piket.index');
 
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Piket  $piket
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Piket $piket)
-    {
-        $piket = Piket::findOrFail($id);
-        return view('piket.show',compact('piket'));
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
      *
      * @param  \App\Piket  $piket
      * @return \Illuminate\Http\Response
@@ -90,14 +73,10 @@ class PiketController extends Controller
             'nama_guru_piket' => 'required|',
             'hari' => 'required'
         ]);
-        $a = Piket::findOrFail($id);
-        $a->nama_guru_piket = $request->nama_guru_piket;
-        $a->hari = $request->hari;
-        $a->save();
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil mengedit <b>$a->nama_guru_piket</b>"
-        ]);
+        $piket = Piket::findOrFail($id);
+        $piket->nama_guru_piket = $request->nama_guru_piket;
+        $piket->hari = $request->hari;
+        $piket->save();
         return redirect()->route('piket.index');
     }
 
@@ -111,10 +90,6 @@ class PiketController extends Controller
     {
         $piket = Piket::findOrFail($id);
         $piket->delete();
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Data Berhasil dihapus"
-        ]);
         return redirect()->route('piket.index');
     }
 }

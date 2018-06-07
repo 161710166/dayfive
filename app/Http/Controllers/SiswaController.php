@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Siswa;
+use App\Kelas;
 use Illuminate\Http\Request;
 use session;
 class SiswaController extends Controller
@@ -14,7 +15,7 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $siswa = Siswa::with('Kelas')->get();
+        $siswa = Siswa::with('kelas')->get();
         return view('siswa.index',compact('siswa'));
     }
 
@@ -25,7 +26,9 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        return view('siswa.create',compact('siswa'));
+        $kelas = Kelas::all();
+        $Siswa = Siswa::all();
+        return view('siswa.create',compact('siswa','kelas'));
     }
 
     /**
@@ -37,12 +40,12 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'nis' => 'required|unique:siswas',
-            'nama' => 'required|max:255',
-            'jk' => 'required|max:255',
-            'tanggal_lahir' => 'required|max:255',
-            'alamat' => 'required|max:255',
-            'kelas_id' => 'required|max:255'
+            'nis' => 'required|',
+            'nama' => 'required|',
+            'jk' => 'required|',
+            'tanggal_lahir' => 'required|',
+            'alamat' => 'required|',
+            'kelas_id' => 'required|'
         ]);
         $siswa = new Siswa;
         $siswa->nis = $request->nis;
@@ -52,28 +55,12 @@ class SiswaController extends Controller
         $siswa->alamat = $request->alamat;
         $siswa->kelas_id = $request->kelas_id;        
         $siswa->save();
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil menyimpan <b>$siswa->nama</b>"
-        ]);
         return redirect()->route('siswa.index');
 
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Siswa  $siswa
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Siswa $siswa)
-    {
-        $siswa = Siswa::findOrFail($id);
-        return view('siswa.show',compact('siswa'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
      *
      * @param  \App\Siswa  $siswa
      * @return \Illuminate\Http\Response
@@ -93,7 +80,7 @@ class SiswaController extends Controller
     public function update(Request $request, Siswa $siswa)
     {
         $this->validate($request,[
-            'nis' => 'required|unique:siswas',
+            'nis' => 'required|',
             'nama' => 'required|',
             'jk' => 'required|',
             'tanggal_lahir' => 'required|',
@@ -120,14 +107,10 @@ class SiswaController extends Controller
      * @param  \App\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Siswa $siswa)
+    public function destroy($id)
     {
         $siswa = Siswa::findOrFail($id);
         $siswa->delete();
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Data Berhasil dihapus"
-        ]);
         return redirect()->route('siswa.index');
     }
 }

@@ -1,16 +1,19 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 <div class="row">
 	<div class="container">
 		<div class="col-md-12">
 			<div class="panel panel-primary">
-			  <div class="panel-heading">Data Kelas
+			  <div class="panel-heading"><center><b><h3>Data Kelas</h3></b></center>
 			  	<div class="panel-title pull-right"><a href="{{ route('kelas.create') }}">Tambah</a>
 			  	</div>
 			  </div>
 			  <div class="panel-body">
 			  	<div class="table-responsive">
 				  <table class="table">
+				  <table border="4" class="table">
+                   <div class="col-lg-9">
+                   <table class="table table-borderless table-striped table-earning">
 				  	<thead>
 			  		<tr>
 			  		  <th>No</th>
@@ -28,9 +31,6 @@
 				    	
 <td>
 	<a class="btn btn-warning" href="{{ route('kelas.edit',$data->id) }}">Edit</a>
-</td>
-<td>
-	<a href="{{ route('kelas.show',$data->id) }}" class="btn btn-success">Show</a>
 </td>
 <td>
 	<form method="post" action="{{ route('kelas.destroy',$data->id) }}">

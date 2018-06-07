@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 <div class="row">
 	<div class="container">
@@ -20,20 +20,6 @@
                             </span>
                         @endif
 			  		</div>
-			  		<div class="form-group {{ $errors->has('siswa_id') ? ' has-error' : '' }}">
-			  			<label class="control-label">Nama Siswa</label>	
-			  			<select name="siswa_id" class="form-control">
-			  				@foreach($siswa as $data)
-			  				<option value="{{ $data->id }}" {{ $selectedSiswa == $data->id ? 'selected="selected"' : '' }} >{{ $data->nama }}</option>
-			  				@endforeach
-			  			</select>
-			  			@if ($errors->has('siswa_id'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('siswa_id') }}</strong>
-                            </span>
-                        @endif
-			  		</div>
-
 			  		<div class="form-group">
 			  			<button type="submit" class="btn btn-primary">Tambah</button>
 			  		</div>

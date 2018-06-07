@@ -9,26 +9,25 @@
                     <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Data Siswa</a>
+                                <i class="fas fa-tachometer-alt"></i>Semua Data</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="index.html">X</a>
+                                 <li>
+                                    <a href="siswa">Siswa</a>
                                 </li>
                                 <li>
-                                    <a href="index2.html">XI</a>
+                                    <a href="absen">Absen</a>
                                 </li>
                                 <li>
-                                    <a href="index3.html">XII</a>
+                                    <a href="kelas">Kelas</a>
+                                </li>
+                                <li>
+                                    <a href="piket">Guru Piket</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Guru Piket</a>
-                        </li>
-                        <li>
                             <a href="table.html">
-                                <i class="fas fa-table"></i>Absen Siswa</a>
+                                <i class="fas fa-table"></i>laporan</a>
                         </li>
                         <li>
 

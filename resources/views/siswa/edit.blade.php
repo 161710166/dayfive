@@ -54,7 +54,7 @@
 			  		</div>
 
 			  		<div class="form-group {{ $errors->has('alamat') ? ' has-error' : '' }}">
-			  			<label class="control-label">alamat siswa</label>	
+			  			<label class="control-label">alamat</label>	
 			  			<input type="text" name="alamat" value="{{ $siswa->alamat }}" class="form-control"  required>
 			  			@if ($errors->has('alamat'))
                             <span class="help-block">
@@ -66,8 +66,8 @@
 			  		<div class="form-group {{ $errors->has('kelas_id') ? ' has-error' : '' }}">
 			  			<label class="control-label">Kelas</label>	
 			  			<select name="kelas_id" class="form-control">
-			  				@foreach($kelas as $data)
-			  				<option value="{{ $data->id }}" {{ $selectedMhs == $data->id ? 'selected="selected"' : '' }} >{{ $data->nama }}</option>
+			  				@foreach($siswa as $data)
+			  				<option value="{{ $data->id }}" {{ $selectedSiswa == $data->id ? 'selected="selected"' : '' }} >{{ $data->kelas }}</option>
 			  				@endforeach
 			  			</select>
 			  			@if ($errors->has('kelas_id'))
@@ -77,7 +77,7 @@
                         @endif
 			  		</div>
 			  		<div class="form-group">
-			  			<button type="submit" class="btn btn-primary">Tambah</button>
+			  			<button type="submit" class="btn btn-primary">Simpan</button>
 			  		</div>
 			  	</form>
 			  </div>

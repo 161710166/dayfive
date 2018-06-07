@@ -38,15 +38,11 @@ class KelasController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'kelas' => 'required|unique:kelas'
+            'kelas' => 'required|'
         ]);
         $kelas = new Kelas;
         $kelas->kelas = $request->kelas;
         $kelas->save();
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil menyimpan <b>$kelas->kelas</b>"
-        ]);
         return redirect()->route('kelas.index');
 
     }
@@ -57,22 +53,11 @@ class KelasController extends Controller
      * @param  \App\kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function show($kelas)
+    public function edit($id)
     {
-        $kelas = Kelas::findOrFail($id);
-        return view('kelas.show',compact('kelas'));
 
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\kelas  $kelas
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($kelas)
-    {
         $kelas = Kelas::findOrFail($id);
+        return view('kelas.edit',compact('kelas'));
     }
 
     /**
@@ -82,7 +67,7 @@ class KelasController extends Controller
      * @param  \App\kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kelas $kelas)
+    public function update(Request $request, $id)
     {
         $this->validate($request,[
             'kelas' => 'required'
@@ -90,10 +75,6 @@ class KelasController extends Controller
         $kelas = Kelas::findOrFail($id);
         $kelas->kelas = $request->kelas;
         $kelas->save();
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil mengedit <b>$kelas->kelas</b>"
-        ]);
         return redirect()->route('kelas.index');
     }
 
@@ -103,14 +84,10 @@ class KelasController extends Controller
      * @param  \App\kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kelas $kelas)
+    public function destroy($id)
     {
-        $kelas = kelas::findOrFail($id);
+        $kelas = Kelas::findOrFail($id);
         $kelas->delete();
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Data Berhasil dihapus"
-        ]);
         return redirect()->route('kelas.index');
     }
 }

@@ -13,9 +13,9 @@
 			  		{{ csrf_field() }}
 			  		<div class="form-group {{ $errors->has('siswa_id') ? ' has-error' : '' }}">
 			  			<label class="control-label">Nama Siswa</label>	
-			  			<select name="siswa_id" class="form-control">
-			  				@foreach($absen as $data)
-			  				<option value="{{ $data->id }}" {{ $selectedAbsen == $data->id ? 'selected="selected"' : '' }} >{{ $data->nama }}</option>
+			  			<select name="nama" class="form-control">
+			  				@foreach($siswa as $data)
+			  				<option value="{{ $data->id }}">{{ $data->nama }}</option>
 			  				@endforeach
 			  			</select>
 			  			@if ($errors->has('siswa_id'))
@@ -27,8 +27,8 @@
 			  		<div class="form-group {{ $errors->has('kelas_id') ? ' has-error' : '' }}">
 			  			<label class="control-label">Kelas</label>	
 			  			<select name="kelas_id" class="form-control">
-			  				@foreach($absen as $data)
-			  				<option value="{{ $data->id }}" {{ $selectedAbsen == $data->id ? 'selected="selected"' : '' }} >{{ $data->kelas }}</option>
+			  				@foreach($kelas as $data)
+			  				<option value="{{ $data->id }}" >{{ $data->kelas }}</option>
 			  				@endforeach
 			  			</select>
 			  			@if ($errors->has('kelas_id'))
@@ -40,20 +40,10 @@
 
 			  		<div class="form-group {{ $errors->has('keterangan') ? ' has-error' : '' }}">
 			  			<label class="control-label">keterangan</label>	
-			  			<input type="text" name="keterangan" class="form-control" value="{{ $absen->keterangan }}" required>
+			  			<input type="text" name="keterangan" class="form-control" value="{{ $data->keterangan }}" required>
 			  			@if ($errors->has('keterangan'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('keterangan') }}</strong>
-                            </span>
-                        @endif
-			  		</div>
-
-			  		<div class="form-group {{ $errors->has('alasan') ? ' has-error' : '' }}">
-			  			<label class="control-label">alasan</label>	
-			  			<input type="text" value="{{ $absen->alasan }}" name="alasan" class="form-control"  required>
-			  			@if ($errors->has('alasan'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('alasan') }}</strong>
                             </span>
                         @endif
 			  		</div>
@@ -61,7 +51,7 @@
 			  			<label class="control-label">Nama Guru Piket</label>	
 			  			<select name="piket_id" class="form-control">
 			  				@foreach($piket as $data)
-			  				<option value="{{ $data->id }}" {{ $selectedPiket == $data->id ? 'selected="selected"' : '' }} >{{ $data->nama_guru_piket }}</option>
+			  				<option value="{{ $data->id }}">{{ $data->nama_guru_piket }}</option>
 			  				@endforeach
 			  			</select>
 			  			@if ($errors->has('piket_id'))
