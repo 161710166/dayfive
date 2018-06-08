@@ -33,15 +33,16 @@
                         @endif
 			  		</div>
 
-			  		<div class="form-group {{ $errors->has('jk') ? ' has-error' : '' }}">
-			  			<label class="control-label">Jenis Kelamin</label>	
-			  			<input type="text" name="jk" class="form-control"  required>
-			  			@if ($errors->has('jk'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('jk') }}</strong>
-                            </span>
-                        @endif
-			  		</div>
+					<div class="form-group {{$errors->has('jk') ? 'has-error' : ''}}">
+								<label class="control-label">Jenis Kelamin</label><br>
+								<input type="radio" class="radio-control" name="jk" value="laki-laki">Laki-laki&nbsp&nbsp
+								<input type="radio" class="radio-control" name="jk"  value="perempuan">Perempuan&nbsp&nbsp
+								@if ($errors->has('jk'))
+									<span class="help-blocks">
+										<strong>{{$errors->first('jk')}}</strong>
+									</span>
+								@endif
+							</div>
 
 			  		<div class="form-group {{ $errors->has('tanggal_lahir') ? ' has-error' : '' }}">
 			  			<label class="control-label">tanggal lahir</label>	

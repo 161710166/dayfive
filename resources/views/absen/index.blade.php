@@ -27,10 +27,10 @@
 				  		@foreach($absen as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
-				    	<td>{{ $data->siswa->nama }}</td>
-				    	<td>{{ $data->kelas->kelas }}</td>				    	
+				    	<td><p>{{ $data->Siswa->nama }}</p></td>
+				    	<td><p>{{ $data->Kelas->kelas }}</p></td>				    	
 				    	<td>{{ $data->keterangan }}</td>
-				    	<td><p>{{ $data->piket->nama_guru_piket }}</p></td>
+				    	<td><p>{{ $data->Piket->nama_guru_piket }}</p></td>
 						<td>
 							<a class="btn btn-warning" href="{{ route('absen.edit',$data->id) }}">Edit</a>
 						</td>

@@ -33,15 +33,22 @@
                         @endif
 			  		</div>
 
-			  		<div class="form-group {{ $errors->has('jk') ? ' has-error' : '' }}">
-			  			<label class="control-label">Jenis Kelamin</label>	
-			  			<input type="text" name="jk" value="{{ $siswa->jk }}" class="form-control"  required>
-			  			@if ($errors->has('jk'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('jk') }}</strong>
-                            </span>
-                        @endif
-			  		</div>
+							<div class="form-group {{$errors->has('jk') ? 'has-error' : ''}}">
+								<label class="control-label">Jenis Kelamin</label>
+								<br>
+								<label type="radio-inline"> 
+								<input type="radio" name="jk" class="flat" value="laki-laki" {{ $siswa->jk == 'laki-laki' ? 'checked' : '' }}> Laki-laki
+
+								<label type="radio-inline"> 
+								<input type="radio" name="jk" class="flat" value="perempuan" {{ $siswa->jk == 'perempuan' ? 'checked' : '' }}> Perempuan
+
+							</label>
+								@if ($errors->has('jk'))
+									<span class="help-block">
+										<strong>{{$errors->first('jk')}}</strong>
+									</span>
+								@endif
+							</div>
 
 			  		<div class="form-group {{ $errors->has('tanggal_lahir') ? ' has-error' : '' }}">
 			  			<label class="control-label">tanggal lahir</label>	
@@ -66,8 +73,8 @@
 			  		<div class="form-group {{ $errors->has('kelas_id') ? ' has-error' : '' }}">
 			  			<label class="control-label">Kelas</label>	
 			  			<select name="kelas_id" class="form-control">
-			  				@foreach($siswa as $data)
-			  				<option value="{{ $data->id }}" {{ $selectedSiswa == $data->id ? 'selected="selected"' : '' }} >{{ $data->kelas }}</option>
+			  				@foreach($kelas as $data)
+			  				<option value="{{ $data->id }}" {{ $selectedKelas == $data->id ? 'selected="selected"' : '' }} >{{ $data->kelas }}</option>
 			  				@endforeach
 			  			</select>
 			  			@if ($errors->has('kelas_id'))

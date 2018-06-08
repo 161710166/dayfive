@@ -46,20 +46,14 @@ class AbsenController extends Controller
             'siswa_id' => 'required|',
             'kelas_id' => 'required|',
             'keterangan' => 'required|',
-            'alasan' => 'required|',
             'piket_id' => 'required|'
         ]);
         $absen = new Absen;
         $absen->siswa_id = $request->siswa_id;
         $absen->kelas_id = $request->kelas_id;
         $absen->keterangan = $request->keterangan;
-        $absen->alasan = $request->alasan;    
         $absen->piket_id = $request->piket_id;
         $absen->save();
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil menyimpan <b>$a->nama</b>"
-        ]);
         return redirect()->route('absen.index');
 
     }
@@ -70,21 +64,16 @@ class AbsenController extends Controller
      * @param  \App\Absen  $absen
      * @return \Illuminate\Http\Response
      */
-    public function show(Absen $absen)
+    public function edit($id)
     {
         $absen = Absen::findOrFail($id);
-        return view('absen.show',compact('absen'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Absen  $absen
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Absen $absen)
-    {
-        $absen = Absen::findOrFail($id);
+        $siswa = Siswa::all();
+        $kelas = Kelas::all();
+        $piket = Piket::all();
+        $selectedSiswa = Siswa::findOrFail($id)->siswa_id;
+        $selectedKelas = Kelas::findOrFail($id)->kelas_id;
+        $selectedPiket = Piket::findOrFail($id)->piket_id;
+        return view('absen.edit',compact('absen','siswa','kelas','piket','selectedSiswa', 'selectedKelas', 'selectedPiket'));
     }
 
     /**
@@ -100,20 +89,14 @@ class AbsenController extends Controller
             'siswa_id' => 'required|',
             'kelas_id' => 'required|',
             'keterangan' => 'required|',
-            'alasan' => 'required|',
             'piket_id' => 'required|'
         ]);
         $absen = new Absen;
         $absen->siswa_id = $request->siswa_id;
         $absen->kelas_id = $request->kelas_id;
         $absen->keterangan = $request->keterangan;
-        $absen->alasan = $request->alasan;    
         $absen->piket_id = $request->piket_id;
-        $a->save();
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil mengedit <b>$a->nama</b>"
-        ]);
+        $absen->save();
         return redirect()->route('absen.index');    }
 
     /**

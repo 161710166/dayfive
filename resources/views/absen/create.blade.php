@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 <div class="row">
 	<div class="container">
 		<div class="col-md-12">
 			<div class="panel panel-primary">
 			  <div class="panel-heading">Tambah Data Absen 
-			  	<div class="panel-title pull-right"><a href="{{ url()->previous() }}">Kembali</a>
+			  	<div class="panel-title pull-right"><a href="{{ route('absen.index') }}">Kembali</a>
 			  	</div>
 			  </div>
 			  <div class="panel-body">
@@ -13,7 +13,7 @@
 			  		{{ csrf_field() }}
 			  		<div class="form-group {{ $errors->has('siswa_id') ? ' has-error' : '' }}">
 			  			<label class="control-label">Nama Siswa</label>	
-			  			<select name="nama" class="form-control">
+			  			<select name="siswa_id" class="form-control">
 			  				@foreach($siswa as $data)
 			  				<option value="{{ $data->id }}">{{ $data->nama }}</option>
 			  				@endforeach
@@ -38,15 +38,17 @@
                         @endif
 			  		</div>
 
-			  		<div class="form-group {{ $errors->has('keterangan') ? ' has-error' : '' }}">
-			  			<label class="control-label">keterangan</label>	
-			  			<input type="text" name="keterangan" class="form-control" value="{{ $data->keterangan }}" required>
-			  			@if ($errors->has('keterangan'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('keterangan') }}</strong>
-                            </span>
-                        @endif
-			  		</div>
+					<div class="form-group {{$errors->has('keterangan') ? 'has-error' : ''}}">
+								<label class="control-label">keterangan</label><br>
+								<input type="radio" class="radio-control" name="keterangan" value="izin">Izin&nbsp&nbsp
+								<input type="radio" class="radio-control" name="keterangan"  value="sakit">Sakit&nbsp&nbsp
+								<input type="radio" class="radio-control" name="keterangan"  value="alfa">Alfa
+								@if ($errors->has('keterangan'))
+									<span class="help-blocks">
+										<strong>{{$errors->first('keterangan')}}</strong>
+									</span>
+								@endif
+							</div>
 			  		<div class="form-group {{ $errors->has('piket_id') ? ' has-error' : '' }}">
 			  			<label class="control-label">Nama Guru Piket</label>	
 			  			<select name="piket_id" class="form-control">

@@ -5,11 +5,11 @@
 		<div class="col-md-12">
 			<div class="panel panel-primary">
 			  <div class="panel-heading">Edit Data Absen 
-			  	<div class="panel-title pull-right"><a href="{{ url()->previous() }}">Kembali</a>
+			  	<div class="panel-title pull-right"><a href="{{ route('absen.index') }}">Kembali</a>
 			  	</div>
 			  </div>
 			  <div class="panel-body">
-			  	<form action="{{ route('absen.update',$absen->id) }}" method="post" >
+			  	<form action="{{ route('absen.update', $absen->id)}}" method="post" >
 			  		<input name="_method" type="hidden" value="PATCH">
         			{{ csrf_field() }}
 			  		<div class="form-group {{ $errors->has('siswa_id') ? ' has-error' : '' }}">
@@ -39,14 +39,18 @@
                         @endif
 			  		</div>
 
-			  		<div class="form-group {{ $errors->has('keterangan') ? ' has-error' : '' }}">
-			  			<label class="control-label">keterangan</label>	
-			  			<input type="text" name="keterangan" class="form-control" value="{{ $absen->keterangan }}" required>
-			  			@if ($errors->has('keterangan'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('keterangan') }}</strong>
-                            </span>
-                        @endif
+							<div class="form-group {{$errors->has('keterangan') ? 'has-error' : ''}}">
+								<label class="control-label">keterangan</label>
+								<br>
+								<label type="radio-inline"> 
+								<input type="radio" name="keterangan" class="flat" value="izin" {{ $absen->keterangan == 'izin' ? 'checked' : '' }}> Izin
+
+								<label type="radio-inline"> 
+								<input type="radio" name="keterangan" class="flat" value="sakit" {{ $absen->keterangan == 'sakit' ? 'checked' : '' }}> Sakit
+
+								<label type="radio-inline"> 
+								<input type="radio" name="keterangan" class="flat" value="alfa" {{ $absen->keterangan == 'alfa' ? 'checked' : '' }}> Alfa
+
 			  		</div>
 
 			  		<div class="form-group {{ $errors->has('piket_id') ? ' has-error' : '' }}">

@@ -1,7 +1,7 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                    <img src="{{asset('assets/admin/images/icon/smk.png')}}" height="125" width="125" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -11,17 +11,18 @@
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Semua Data</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
+
+                                <li>
+                                    <a href="kelas">Kelas</a>
+                                </li>
                                  <li>
                                     <a href="siswa">Siswa</a>
                                 </li>
                                 <li>
-                                    <a href="absen">Absen</a>
-                                </li>
-                                <li>
-                                    <a href="kelas">Kelas</a>
-                                </li>
-                                <li>
                                     <a href="piket">Guru Piket</a>
+                                </li>
+                                <li>
+                                    <a href="absen">Absen</a>
                                 </li>
                             </ul>
                         </li>

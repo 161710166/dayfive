@@ -8,14 +8,13 @@ class Siswa extends Model
 {
     protected $table = 'siswas';
     protected $fillable = ['nis','nama','jk','tanggal_lahir','alamat','kelas_id'];
-    	public $timestamps = true;
+    public $timestamps = true;
 
 	public function Kelas(){
-	return $this->belongsTo('App\Kelas','kelas_id');
+	   return $this->belongsTo('App\Kelas','kelas_id');
 	}
 
-	public function absen()
-    {
-    	return $this->hasOne('App\Absen','siswa_id');
+	public function Absen(){
+        return $this->hasMany('App\Absen','siswa_id');
     }
 }

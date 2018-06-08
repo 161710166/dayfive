@@ -30,9 +30,6 @@
 				    	<td>{{ $data->nama_guru_piket }}</td>
 				    	<td><p>{{ $data->hari }}</p></td>
 <td>
-	<a class="btn btn-warning" href="{{ route('piket.edit',$data->id) }}">Edit</a>
-</td>
-<td>
 	<form method="post" action="{{ route('piket.destroy',$data->id) }}">
 		<input name="_token" type="hidden" value="{{ csrf_token() }}">
 		<input type="hidden" name="_method" value="DELETE">

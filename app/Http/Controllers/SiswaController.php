@@ -65,9 +65,12 @@ class SiswaController extends Controller
      * @param  \App\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Siswa $siswa)
+    public function edit($id)
     {
         $siswa = Siswa::findOrFail($id);
+        $kelas = Kelas::all();
+        $selectedKelas = Kelas::findOrFail($id)->id_kelas;
+        return view('siswa.edit',compact('siswa','kelas','selectedKelas'));
     }
 
     /**
@@ -77,7 +80,7 @@ class SiswaController extends Controller
      * @param  \App\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Siswa $siswa)
+    public function update(Request $request,$id)
     {
         $this->validate($request,[
             'nis' => 'required|',
@@ -94,10 +97,7 @@ class SiswaController extends Controller
         $siswa->tanggal_lahir = $request->tanggal_lahir;
         $siswa->alamat = $request->alamat;
         $siswa->kelas_id = $request->kelas_id;        
-        $siswa->save();Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil mengedit <b>$siswa->nama</b>"
-        ]);
+        $siswa->save();
         return redirect()->route('siswa.index');
     }
 

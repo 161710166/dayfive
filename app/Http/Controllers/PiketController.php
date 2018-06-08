@@ -55,18 +55,6 @@ class PiketController extends Controller
      * @param  \App\Piket  $piket
      * @return \Illuminate\Http\Response
      */
-    public function edit(Piket $piket)
-    {
-        $piket = Piket::findOrFail($id);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Piket  $piket
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Piket $piket)
     {
         $this->validate($request,[
@@ -86,7 +74,7 @@ class PiketController extends Controller
      * @param  \App\Piket  $piket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Piket $piket)
+    public function destroy($id)
     {
         $piket = Piket::findOrFail($id);
         $piket->delete();
